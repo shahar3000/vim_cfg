@@ -1,5 +1,5 @@
 [submodule "plugin/Vundle.vim"]
-	path = plugin/Vundle.vim
+	path = Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
 [submodule "vundle_plugins/vim-fugitive"]
 	path = vundle_plugins/vim-fugitive
