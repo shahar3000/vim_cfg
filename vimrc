@@ -57,10 +57,6 @@ autocmd InsertLeave * match ExtraSpaces /\s\+$/
 autocmd BufWritePost * :TlistUpdate	" Update taglist after saving a file
 let Tlist_Show_One_File = 1		" Display tags of the active buffer only
 let Tlist_WinWidth = 50			" Set taglist window width
-nmap <F9> :TlistToggle<CR>
-
-" File exploring toggling
-nmap <F10> :NERDTreeToggle<CR>
 
 " Search font definition
 hi Search cterm=NONE ctermfg=black ctermbg=lightgreen
@@ -84,15 +80,42 @@ endfunction
 nmap <Leader>br :%!xxd<CR> :set filetype=xxd<CR>
 nmap <Leader>bw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 
-" Set FW coding style. TODO make this command generic
-autocmd BufRead,BufNewFile /home/ssmatity/devel/wcd_fw-dev/**/*.{c,h} setlocal expandtab shiftwidth=2 softtabstop=2 smartindent colorcolumn=100
+" FW coding style configuration setup
+function! FwSetup()
+	setlocal expandtab shiftwidth=2 softtabstop=2 smartindent colorcolumn=100
+	syntax keyword cType S08 U08 S16 U16 S32 U32 VU32 U64
+endfunction
 
-" Force switch to FW coding style
-nmap <F11> :setlocal expandtab<CR>:setlocal shiftwidth=2<CR>:setlocal softtabstop=2<CR>:setlocal smartindent<CR>:setlocal colorcolumn=100<CR>
+" Linux kernel coding style configuration setup
+function! LinuxKernelSetup()
+	setlocal noexpandtab shiftwidth=8 tabstop=8 softtabstop=8 smartindent colorcolumn=80
+	syntax keyword cType u8 u16 u32 u64 s8 s16 s32 s64 __le16 __be16 __le32 __be32 __le64 __be64
+endfunction
 
+" Set FW coding style
+autocmd BufRead,BufNewFile /**/wcd_fw-dev/**/*.{c,h} call FwSetup()
+
+" Set FW coding style
+autocmd BufRead,BufNewFile /**/iwlwifi-stack-dev/**/*.{c,h} call LinuxKernelSetup()
+autocmd BufRead,BufNewFile /**/iwlwifi-hostap/**/*.{c,h} call LinuxKernelSetup()
+
+" Load cctree index
 nmap <F5> :CCTreeLoadXRefDB cctree.out<CR>
+
+" Build and load cctree index
 nmap <F6> :!ccglue -S cscope.out -o cctree.out<CR>:CCTreeLoadXRefDB cctree.out<CR>
+
+" Load cscope index
 nmap <F7> :call CscopeLoadDB()<CR><CR>
+
+" Build and load cscope index
 nmap <F8> :!cscope -Rbq; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>:call CscopeLoadDB()<CR><CR>
 
+" Taglist toggle
+nmap <F9> :TlistToggle<CR>
+
+" File exploring toggling
+nmap <F10> :NERDTreeToggle<CR>
+
+" Build and load custom cscope index
 nmap <F12> :call CustomIndex()<CR>
