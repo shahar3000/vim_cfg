@@ -1,0 +1,27 @@
+[submodule "plugin/Vundle.vim"]
+	path = plugin/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "vundle_plugins/vim-fugitive"]
+	path = vundle_plugins/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vundle_plugins/command-t"]
+	path = vundle_plugins/command-t
+	url = https://github.com/wincent/command-t.git
+[submodule "vundle_plugins/vim-ingo-library"]
+	path = vundle_plugins/vim-ingo-library
+	url = https://github.com/inkarkat/vim-ingo-library.git
+[submodule "vundle_plugins/vim-mark"]
+	path = vundle_plugins/vim-mark
+	url = https://github.com/inkarkat/vim-mark.git
+[submodule "vundle_plugins/CCTree"]
+	path = vundle_plugins/CCTree
+	url = https://github.com/hari-rangarajan/CCTree.git
+[submodule "vundle_plugins/Zenburn"]
+	path = vundle_plugins/Zenburn
+	url = https://github.com/jnurmine/Zenburn.git
+[submodule "vundle_plugins/nerdtree"]
+	path = vundle_plugins/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vundle_plugins/taglist.vim"]
+	path = vundle_plugins/taglist.vim
+	url = https://github.com/shahar3000/taglist.vim.git
