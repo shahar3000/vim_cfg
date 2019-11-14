@@ -88,11 +88,11 @@ nmap <Leader>bw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 autocmd BufRead,BufNewFile /home/ssmatity/devel/wcd_fw-dev/**/*.{c,h} setlocal expandtab shiftwidth=2 softtabstop=2 smartindent colorcolumn=100
 
 " Force switch to FW coding style
-nmap <F3> :setlocal expandtab<CR>:setlocal shiftwidth=2<CR>:setlocal softtabstop=2<CR>:setlocal smartindent<CR>:setlocal colorcolumn=100<CR>
-
-nmap <F4> :call CustomIndex()<CR>
+nmap <F11> :setlocal expandtab<CR>:setlocal shiftwidth=2<CR>:setlocal softtabstop=2<CR>:setlocal smartindent<CR>:setlocal colorcolumn=100<CR>
 
 nmap <F5> :CCTreeLoadXRefDB cctree.out<CR>
 nmap <F6> :!ccglue -S cscope.out -o cctree.out<CR>:CCTreeLoadXRefDB cctree.out<CR>
 nmap <F7> :call CscopeLoadDB()<CR><CR>
 nmap <F8> :!cscope -Rbq; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>:call CscopeLoadDB()<CR><CR>
+
+nmap <F12> :call CustomIndex()<CR>
