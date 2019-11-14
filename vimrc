@@ -1,7 +1,7 @@
 set nocompatible			" Be iMproved, required
 filetype off				" Required for Vundle
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/plugin/Vundle.vim
+set rtp+=~/.vim/Vundle.vim
 call vundle#begin('~/.vim/vundle_plugins/')
 Plugin 'tpope/vim-fugitive'		" Use git from inside vim
 Plugin 'wincent/command-t'		" Fuzzy file search
