@@ -61,6 +61,13 @@ let Tlist_WinWidth = 50			" Set taglist window width
 " Search font definition
 hi Search cterm=NONE ctermfg=black ctermbg=lightgreen
 
+" Disable Background Color Erase (BCE) so that color schemes render properly when
+" inside 256-color tmux and GNU screen.
+" See also http://snk.tuxfamily.org/log/vim-256color-bce.html
+if &term =~ '256color'
+  set t_ut=
+endif
+
 " List spaces (:set list/nolist)
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
