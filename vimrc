@@ -90,7 +90,8 @@ nmap <Leader>bw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 " FW coding style configuration setup
 function! FwSetup()
 	setlocal expandtab shiftwidth=2 softtabstop=2 smartindent colorcolumn=100
-	syntax keyword cType S08 U08 S16 U16 S32 U32 VU32 U64
+	syntax keyword cType S08 U08 S16 U16 S32 U32 VU32 U64 BOOLEAN
+	syntax keyword Boolean TRUE FALSE
 endfunction
 
 " Linux kernel coding style configuration setup
