@@ -107,6 +107,9 @@ autocmd BufRead,BufNewFile /**/wcd_fw-dev/**/*.{c,h} call FwSetup()
 autocmd BufRead,BufNewFile /**/iwlwifi-stack-dev/**/*.{c,h} call LinuxKernelSetup()
 autocmd BufRead,BufNewFile /**/iwlwifi-hostap/**/*.{c,h} call LinuxKernelSetup()
 
+" Try to automatically load a cscope database
+autocmd VimEnter * call CscopeLoadDB()
+
 " Load cctree index
 nmap <F5> :CCTreeLoadXRefDB cctree.out<CR>
 
