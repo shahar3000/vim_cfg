@@ -103,7 +103,7 @@ endfunction
 " Set FW coding style
 autocmd BufRead,BufNewFile /**/wcd_fw-dev/**/*.{c,h} call FwSetup()
 
-" Set FW coding style
+" Set Linux kernel coding style
 autocmd BufRead,BufNewFile /**/iwlwifi-stack-dev/**/*.{c,h} call LinuxKernelSetup()
 autocmd BufRead,BufNewFile /**/iwlwifi-hostap/**/*.{c,h} call LinuxKernelSetup()
 
