@@ -13,6 +13,7 @@ Plugin 'shahar3000/taglist.vim'		" See buffer symbols
 Plugin 'scrooloose/nerdtree'		" File explorer
 Plugin 'vim-airline/vim-airline'	" status/tab line plugin
 Plugin 'vim-airline/vim-airline-themes'	" themes for status/tab line plugin
+Plugin 'shahar3000/clang_complete'
 call vundle#end()
 " needed for Vundle. Also, support different tabs for different files
 filetype plugin indent on
@@ -90,6 +91,13 @@ let g:airline_section_y=''
 let g:airline_skip_empty_sections = 1
 " Use wombat theme
 let g:airline_theme='wombat'
+
+" Disable preview window
+set completeopt-=preview
+" Set clang library path
+let g:clang_library_path='/usr/lib/llvm-6.0/lib/libclang.so.1'
+" Disable default key mapping
+let g:clang_make_default_keymappings=0
 
 " Generate an index using a custom index script
 function! CustomIndex()
