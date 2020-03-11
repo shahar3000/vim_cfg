@@ -32,16 +32,16 @@ set ruler				" Show cursor location
 let mapleader = ","			" Change mark leader char
 set laststatus=2			" Always on status line
 set viminfo+=n~/.vim/viminfo		" Set viminfo location inside .vim dir
-" set relativenumber			" Use relative numbers
-" set hidden				" Move between unsaved buffers
+set relativenumber			" Use relative numbers
+set hidden				" Move between unsaved buffers
 
 if has("autocmd")
 	filetype plugin indent on
 endif
 
 " Enable using the mouse
-set mouse=a
-set ttymouse=xterm2
+" set mouse=a
+" set ttymouse=xterm2
 
 " Don't create backup and swap files
 set nobackup
@@ -90,7 +90,7 @@ nmap <Leader>bw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 " FW coding style configuration setup
 function! FwSetup()
 	setlocal expandtab shiftwidth=2 softtabstop=2 smartindent colorcolumn=100
-	syntax keyword cType S08 U08 S16 U16 S32 U32 VU32 U64 BOOLEAN
+	syntax keyword cType S08 U08 S16 U16 S32 U32 VU32 U64 S64 BOOLEAN
 	syntax keyword Boolean TRUE FALSE
 endfunction
 
