@@ -11,6 +11,8 @@ Plugin 'hari-rangarajan/CCTree'		" Show call tree
 Plugin 'jnurmine/Zenburn'		" Colorscheme
 Plugin 'shahar3000/taglist.vim'		" See buffer symbols
 Plugin 'scrooloose/nerdtree'		" File explorer
+Plugin 'vim-airline/vim-airline'	" status/tab line plugin
+Plugin 'vim-airline/vim-airline-themes'	" themes for status/tab line plugin
 call vundle#end()
 " needed for Vundle. Also, support different tabs for different files
 filetype plugin indent on
@@ -70,6 +72,24 @@ endif
 
 " List spaces (:set list/nolist)
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+" Use vim-airline tab line
+let g:airline#extensions#tabline#enabled = 1
+" Set empty separators between tabs
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+" Add tab number
+let g:airline#extensions#tabline#tab_nr_type = 1
+" Use the file name without path in the tab name
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+" Remove the file type from status line
+let g:airline_section_x=''
+" Remove encoding type fro, status line
+let g:airline_section_y=''
+" Remove separators for empty sections
+let g:airline_skip_empty_sections = 1
+" Use wombat theme
+let g:airline_theme='wombat'
 
 " Generate an index using a custom index script
 function! CustomIndex()
