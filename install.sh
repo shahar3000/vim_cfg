@@ -18,7 +18,7 @@ install_ccglue() {
 install_perquisites() {
 	sudo apt update
 	sudo apt remove -y vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox
-	sudo apt install -y ruby-dev libperl-dev python-dev rake exuberant-ctags cmake cscope bear libclang1 automake autoconf libtool
+	sudo apt install -y ruby-dev libperl-dev python3.6-dev rake exuberant-ctags cmake cscope bear libclang1 automake autoconf libtool
 }
 
 install_vim() {
@@ -36,7 +36,7 @@ install_vim() {
 		--enable-multibyte \
 		--enable-rubyinterp=yes \
 		--enable-pythoninterp=yes \
-		--with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+		--with-python-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
 		--enable-perlinterp=yes \
 		--enable-luainterp=yes \
 		--enable-cscope \
