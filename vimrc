@@ -156,5 +156,8 @@ nmap <F9> :TlistToggle<CR>
 " File exploring toggling
 nmap <F10> :NERDTreeToggle<CR>
 
+" Open current buffer in file explorer
+nmap <F11> :NERDTreeFind<CR>
+
 " Build and load custom cscope index
 nmap <F12> :call CustomIndex()<CR>
