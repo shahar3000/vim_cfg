@@ -25,3 +25,12 @@
 [submodule "vundle_plugins/taglist.vim"]
 	path = vundle_plugins/taglist.vim
 	url = https://github.com/shahar3000/taglist.vim.git
+[submodule "vundle_plugins/vim-airline"]
+	path = vundle_plugins/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule "vundle_plugins/vim-airline-themes"]
+	path = vundle_plugins/vim-airline-themes
+	url = git@github.com:vim-airline/vim-airline-themes.git
+[submodule "vundle_plugins/clang_complete"]
+	path = vundle_plugins/clang_complete
+	url = git@github.com:shahar3000/clang_complete.git
