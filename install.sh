@@ -18,7 +18,7 @@ install_ccglue() {
 install_perquisites() {
 	sudo apt update
 	sudo apt remove -y vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox
-	sudo apt install -y ruby-dev libperl-dev python3.6-dev rake exuberant-ctags cmake cscope bear libclang1 automake autoconf libtool
+	sudo apt install -y ruby-dev libperl-dev python3.6-dev rake exuberant-ctags cmake cscope automake autoconf libtool
 }
 
 install_vim() {
