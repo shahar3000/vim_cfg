@@ -28,3 +28,6 @@
 [submodule "vundle_plugins/lightline.vim"]
 	path = vundle_plugins/lightline.vim
 	url = git@github.com:shahar3000/lightline.git
+[submodule "vundle_plugins/vim-syntax-extra"]
+	path = vundle_plugins/vim-syntax-extra
+	url = git@github.com:justinmk/vim-syntax-extra.git

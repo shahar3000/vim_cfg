@@ -12,6 +12,7 @@ Plugin 'jnurmine/Zenburn'		" Colorscheme
 Plugin 'shahar3000/taglist.vim'		" See buffer symbols
 Plugin 'scrooloose/nerdtree'		" File explorer
 Plugin 'shahar3000y/lightline.vim'	" Status/tab line plugin
+Plugin 'justinmk/vim-syntax-extra'	" Improve C syntax presentation
 call vundle#end()
 " needed for Vundle. Also, support different tabs for different files
 filetype plugin indent on
