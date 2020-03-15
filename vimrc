@@ -11,6 +11,7 @@ Plugin 'hari-rangarajan/CCTree'		" Show call tree
 Plugin 'jnurmine/Zenburn'		" Colorscheme
 Plugin 'shahar3000/taglist.vim'		" See buffer symbols
 Plugin 'scrooloose/nerdtree'		" File explorer
+Plugin 'shahar3000y/lightline.vim'	" Status/tab line plugin
 call vundle#end()
 " needed for Vundle. Also, support different tabs for different files
 filetype plugin indent on
@@ -82,6 +83,52 @@ function! CustomIndex()
 		echo("ERROR: index.sh was not found")
 	endif
 endfunction
+
+	function! LightlineFugitive()
+		if exists('*FugitiveStatusline')
+			return FugitiveStatusline()[5:-3]
+		endif
+		return ''
+	endfunction
+
+	let g:lightline = {
+	\ 'colorscheme' : 'ssmatity',
+	\ 'active' : {
+		\ 'left': [
+			\ ['mode', 'paste'],
+			\ ['fugitive'],
+			\ ['readonly', 'relativepath', 'modified'],
+		\ ],
+		\ 'right': [
+			\ ['lineinfo'],
+			\ ['percent'],
+		\ ],
+	\ },
+	\ 'inactive' : {
+		\ 'left': [
+			\ ['filename'],
+		\ ],
+		\ 'right': [
+			\ ['lineinfo'],
+			\ ['percent'],
+		\ ],
+	\ },
+	\ 'tabline' : {
+		\ 'left': [
+			\ ['tabs'],
+		\ ],
+		\ 'right': [],
+	\ },
+	\ 'component_function' : {
+		\ 'fugitive': 'LightlineFugitive',
+	\ },
+	\ 'component': {
+	\ },
+	\ 'subseparator' : {
+		\ 'left': '',
+		\ 'right': '',
+	\ },
+\ }
 
 " Binary read and write
 nmap <Leader>br :%!xxd<CR> :set filetype=xxd<CR>

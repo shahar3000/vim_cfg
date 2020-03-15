@@ -25,3 +25,6 @@
 [submodule "vundle_plugins/taglist.vim"]
 	path = vundle_plugins/taglist.vim
 	url = https://github.com/shahar3000/taglist.vim.git
+[submodule "vundle_plugins/lightline.vim"]
+	path = vundle_plugins/lightline.vim
+	url = git@github.com:shahar3000/lightline.git
