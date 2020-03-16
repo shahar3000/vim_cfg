@@ -107,7 +107,7 @@ endfunction
 	\ },
 	\ 'inactive' : {
 		\ 'left': [
-			\ ['filename'],
+			\ ['readonly', 'filename', 'modified'],
 		\ ],
 		\ 'right': [
 			\ ['lineinfo'],
