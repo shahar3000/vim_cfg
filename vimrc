@@ -173,11 +173,16 @@ nmap <F8> :!cscope -Rbq; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>:
 " Taglist toggle
 nmap <F9> :TlistToggle<CR>
 
-" File exploring toggling
-nmap <F10> :NERDTreeToggle<CR>
+function! NerdTreeToggle()
+	if empty(expand("%")) || g:NERDTree.IsOpen()
+		:NERDTreeToggle
+	else
+		:NERDTreeFind
+	endif
+endfunction
 
-" Open current buffer in file explorer
-nmap <F11> :NERDTreeFind<CR>
+" File exploring toggling
+nmap <F10> :call NerdTreeToggle()<CR>
 
 " Build and load custom cscope index
 nmap <F12> :call CustomIndex()<CR>
