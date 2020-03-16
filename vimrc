@@ -1,21 +1,21 @@
 set nocompatible			" Be iMproved, required
-filetype off				" Required for Vundle
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/Vundle.vim
-call vundle#begin('~/.vim/vundle_plugins/')
-Plugin 'tpope/vim-fugitive'		" Use git from inside vim
-Plugin 'wincent/command-t'		" Fuzzy file search
-Plugin 'inkarkat/vim-ingo-library'	" Prerequisite of the mark plugin
-Plugin 'inkarkat/vim-mark'		" Mark words instances
-Plugin 'hari-rangarajan/CCTree'		" Show call tree
-Plugin 'jnurmine/Zenburn'		" Colorscheme
-Plugin 'shahar3000/taglist.vim'		" See buffer symbols
-Plugin 'scrooloose/nerdtree'		" File explorer
-Plugin 'shahar3000y/lightline.vim'	" Status/tab line plugin
-Plugin 'justinmk/vim-syntax-extra'	" Improve C syntax presentation
-call vundle#end()
-" needed for Vundle. Also, support different tabs for different files
-filetype plugin indent on
+
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'		" Use git from inside vim
+Plug 'inkarkat/vim-ingo-library'	" Prerequisite of the mark plugin
+Plug 'inkarkat/vim-mark'		" Mark words instances
+Plug 'hari-rangarajan/CCTree'		" Show call tree
+Plug 'jnurmine/Zenburn'			" Colorscheme
+Plug 'shahar3000/taglist.vim'		" See buffer symbols
+Plug 'scrooloose/nerdtree'		" File explorer
+Plug 'shahar3000/lightline.vim'		" Status/tab line plugin
+Plug 'justinmk/vim-syntax-extra'	" Improve C syntax presentation
+
+" Fuzzy file search
+Plug 'wincent/command-t', {
+	\ 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+\ }
+call plug#end()
 
 try
 	colorscheme zenburn		" Use zenburn colorscheme

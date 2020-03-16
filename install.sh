@@ -18,7 +18,7 @@ install_ccglue() {
 install_perquisites() {
 	sudo apt update
 	sudo apt remove -y vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox
-	sudo apt install -y ruby-dev libperl-dev python3.6-dev rake exuberant-ctags cmake cscope automake autoconf libtool
+	sudo apt install -y ruby-dev libperl-dev python3.6-dev exuberant-ctags cmake cscope automake autoconf libtool
 }
 
 install_vim() {
@@ -57,16 +57,7 @@ set_vim_default_editor() {
 	sudo update-alternatives --set vi /usr/local/bin/vim
 }
 
-post_cfg() {
-	local base_dir="$(realpath $(dirname "${BASH_SOURCE[0]}"))"
-
-	pushd $base_dir/vundle_plugins/command-t
-	rake make
-	popd
-}
-
 install_perquisites
 install_vim
 set_vim_default_editor
 install_ccglue
-post_cfg

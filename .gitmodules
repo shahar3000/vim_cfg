@@ -1,33 +1,30 @@
-[submodule "plugin/Vundle.vim"]
-	path = Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule "vundle_plugins/vim-fugitive"]
-	path = vundle_plugins/vim-fugitive
+[submodule "plugged/vim-fugitive"]
+	path = plugged/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vundle_plugins/command-t"]
-	path = vundle_plugins/command-t
-	url = https://github.com/wincent/command-t.git
-[submodule "vundle_plugins/vim-ingo-library"]
-	path = vundle_plugins/vim-ingo-library
+[submodule "plugged/vim-ingo-library"]
+	path = plugged/vim-ingo-library
 	url = https://github.com/inkarkat/vim-ingo-library.git
-[submodule "vundle_plugins/vim-mark"]
-	path = vundle_plugins/vim-mark
+[submodule "plugged/vim-mark"]
+	path = plugged/vim-mark
 	url = https://github.com/inkarkat/vim-mark.git
-[submodule "vundle_plugins/CCTree"]
-	path = vundle_plugins/CCTree
+[submodule "plugged/CCTree"]
+	path = plugged/CCTree
 	url = https://github.com/hari-rangarajan/CCTree.git
-[submodule "vundle_plugins/Zenburn"]
-	path = vundle_plugins/Zenburn
+[submodule "plugged/Zenburn"]
+	path = plugged/Zenburn
 	url = https://github.com/jnurmine/Zenburn.git
-[submodule "vundle_plugins/nerdtree"]
-	path = vundle_plugins/nerdtree
+[submodule "plugged/nerdtree"]
+	path = plugged/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vundle_plugins/taglist.vim"]
-	path = vundle_plugins/taglist.vim
+[submodule "plugged/taglist.vim"]
+	path = plugged/taglist.vim
 	url = https://github.com/shahar3000/taglist.vim.git
-[submodule "vundle_plugins/lightline.vim"]
-	path = vundle_plugins/lightline.vim
+[submodule "plugged/lightline.vim"]
+	path = plugged/lightline.vim
 	url = git@github.com:shahar3000/lightline.git
-[submodule "vundle_plugins/vim-syntax-extra"]
-	path = vundle_plugins/vim-syntax-extra
+[submodule "plugged/vim-syntax-extra"]
+	path = plugged/vim-syntax-extra
 	url = git@github.com:justinmk/vim-syntax-extra.git
+[submodule "plugged/command-t"]
+	path = plugged/command-t
+	url = git@github.com:wincent/command-t.git
