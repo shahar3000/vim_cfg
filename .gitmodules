@@ -21,7 +21,7 @@
 	url = https://github.com/shahar3000/taglist.vim.git
 [submodule "plugged/lightline.vim"]
 	path = plugged/lightline.vim
-	url = https://github.com/shahar3000/lightline.git
+	url = https://github.com/shahar3000/lightline.vim.git
 [submodule "plugged/vim-syntax-extra"]
 	path = plugged/vim-syntax-extra
 	url = https://github.com/justinmk/vim-syntax-extra.git
