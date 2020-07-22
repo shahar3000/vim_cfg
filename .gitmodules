@@ -25,6 +25,3 @@
 [submodule "plugged/vim-syntax-extra"]
 	path = plugged/vim-syntax-extra
 	url = https://github.com/justinmk/vim-syntax-extra.git
-[submodule "plugged/command-t"]
-	path = plugged/command-t
-	url = https://github.com/wincent/command-t.git

@@ -10,11 +10,6 @@ Plug 'shahar3000/taglist.vim'		" See buffer symbols
 Plug 'scrooloose/nerdtree'		" File explorer
 Plug 'shahar3000/lightline.vim'		" Status/tab line plugin
 Plug 'justinmk/vim-syntax-extra'	" Improve C syntax presentation
-
-" Fuzzy file search
-Plug 'wincent/command-t', {
-	\ 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-\ }
 call plug#end()
 
 try
