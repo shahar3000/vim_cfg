@@ -81,12 +81,12 @@ function! CustomIndex()
 	endif
 endfunction
 
-	function! LightlineFugitive()
-		if exists('*FugitiveStatusline')
-			return FugitiveStatusline()[5:-3]
-		endif
-		return ''
-	endfunction
+function! LightlineFugitive()
+	if exists('*FugitiveStatusline')
+		return FugitiveStatusline()[5:-3]
+	endif
+	return ''
+endfunction
 
 	let g:lightline = {
 	\ 'colorscheme' : 'ssmatity',
