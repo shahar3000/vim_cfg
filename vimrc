@@ -130,34 +130,6 @@ endfunction
 	\ },
 \ }
 
-" Binary read and write
-nmap <Leader>br :%!xxd<CR> :set filetype=xxd<CR>
-nmap <Leader>bw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
-
-" FW coding style configuration setup
-function! FwSetup()
-	setlocal expandtab shiftwidth=2 softtabstop=2 smartindent colorcolumn=100
-	syntax keyword cType S08 U08 S16 U16 S32 U32 VU32 U64 S64 BOOLEAN
-	syntax keyword Boolean TRUE FALSE
-endfunction
-
-" Linux kernel coding style configuration setup
-function! LinuxKernelSetup()
-	setlocal noexpandtab shiftwidth=8 tabstop=8 softtabstop=8 smartindent colorcolumn=80
-	syntax keyword cType u8 u16 u32 u64 s8 s16 s32 s64 __le16 __be16 __le32 __be32 __le64 __be64
-endfunction
-
-" Set FW coding style
-autocmd BufRead,BufNewFile /**/wcd_fw-dev/**/*.{c,h} call FwSetup()
-
-" Set Linux kernel coding style
-autocmd BufRead,BufNewFile /**/iwlwifi-stack-dev/**/*.{c,h} call LinuxKernelSetup()
-autocmd BufRead,BufNewFile /**/iwlwifi-hostap/**/*.{c,h} call LinuxKernelSetup()
-
-
-
-
-
 function! NerdTreeToggle()
 	if empty(expand("%")) || g:NERDTree.IsOpen()
 		:NERDTreeToggle
