@@ -16,9 +16,6 @@
 [submodule "plugged/nerdtree"]
 	path = plugged/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "plugged/taglist.vim"]
-	path = plugged/taglist.vim
-	url = https://github.com/shahar3000/taglist.vim.git
 [submodule "plugged/lightline.vim"]
 	path = plugged/lightline.vim
 	url = https://github.com/shahar3000/lightline.vim.git

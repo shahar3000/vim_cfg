@@ -6,7 +6,6 @@ Plug 'inkarkat/vim-ingo-library'	" Prerequisite of the mark plugin
 Plug 'inkarkat/vim-mark'		" Mark words instances
 Plug 'hari-rangarajan/CCTree'		" Show call tree
 Plug 'jnurmine/Zenburn'			" Colorscheme
-Plug 'shahar3000/taglist.vim'		" See buffer symbols
 Plug 'scrooloose/nerdtree'		" File explorer
 Plug 'shahar3000/lightline.vim'		" Status/tab line plugin
 Plug 'justinmk/vim-syntax-extra'	" Improve C syntax presentation
@@ -165,8 +164,6 @@ nmap <F7> :call CscopeLoadDB()<CR><CR>
 " Build and load cscope index
 nmap <F8> :!cscope -Rbq; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>:call CscopeLoadDB()<CR><CR>
 
-" Taglist toggle
-nmap <F9> :TlistToggle<CR>
 
 function! NerdTreeToggle()
 	if empty(expand("%")) || g:NERDTree.IsOpen()
@@ -175,6 +172,9 @@ function! NerdTreeToggle()
 		:NERDTreeFind
 	endif
 endfunction
+
+" Build ctags index
+nmap <F9> :!ctags -R .<CR>
 
 " File exploring toggling
 nmap <F10> :call NerdTreeToggle()<CR>
