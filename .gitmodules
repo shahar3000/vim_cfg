@@ -28,3 +28,6 @@
 [submodule "plugged/fzf.vim"]
 	path = plugged/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "plugged/coc.nvim"]
+	path = plugged/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
