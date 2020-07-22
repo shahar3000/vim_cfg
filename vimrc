@@ -9,6 +9,8 @@ Plug 'jnurmine/Zenburn'			" Colorscheme
 Plug 'scrooloose/nerdtree'		" File explorer
 Plug 'shahar3000/lightline.vim'		" Status/tab line plugin
 Plug 'justinmk/vim-syntax-extra'	" Improve C syntax presentation
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 try
@@ -160,6 +162,17 @@ function! NerdTreeToggle()
 		:NERDTreeFind
 	endif
 endfunction
+
+nmap <Leader>p :Files<CR>
+nmap <leader>b :Buffers<CR>
+nmap <leader>w :Windows<CR>
+nmap <leader>T :Tags<CR>
+nmap <leader>BT :BTags<CR>
+nmap <leader>C :Commits<CR>
+nmap <leader>BC :BCommits<CR>
+
+nmap <F2> :Rg<CR>
+nmap <F3> :Rg <C-R>=expand("<cword>")<CR><CR>
 
 " Build ctags index
 nmap <F9> :!ctags -R .<CR>

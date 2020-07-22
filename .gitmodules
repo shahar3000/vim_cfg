@@ -22,3 +22,9 @@
 [submodule "plugged/vim-syntax-extra"]
 	path = plugged/vim-syntax-extra
 	url = https://github.com/justinmk/vim-syntax-extra.git
+[submodule "plugged/fzf"]
+	path = plugged/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "plugged/fzf.vim"]
+	path = plugged/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
