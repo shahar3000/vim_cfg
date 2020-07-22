@@ -149,20 +149,8 @@ autocmd BufRead,BufNewFile /**/wcd_fw-dev/**/*.{c,h} call FwSetup()
 autocmd BufRead,BufNewFile /**/iwlwifi-stack-dev/**/*.{c,h} call LinuxKernelSetup()
 autocmd BufRead,BufNewFile /**/iwlwifi-hostap/**/*.{c,h} call LinuxKernelSetup()
 
-" Try to automatically load a cscope database
-autocmd VimEnter * call CscopeLoadDB()
 
-" Load cctree index
-nmap <F5> :CCTreeLoadXRefDB cctree.out<CR>
 
-" Build and load cctree index
-nmap <F6> :!ccglue -S cscope.out -o cctree.out<CR>:CCTreeLoadXRefDB cctree.out<CR>
-
-" Load cscope index
-nmap <F7> :call CscopeLoadDB()<CR><CR>
-
-" Build and load cscope index
-nmap <F8> :!cscope -Rbq; ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>:call CscopeLoadDB()<CR><CR>
 
 
 function! NerdTreeToggle()

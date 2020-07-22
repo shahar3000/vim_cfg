@@ -99,51 +99,50 @@ if has("cscope")
     " files that contain 'time.h' as part of their name).
 
 
-    " To do the first type of search, hit 'CTRL-\', followed by one of the
+    " To do the first type of search, hit the leader key, followed by one of the
     " cscope search types above (s,g,c,t,e,f,i,d).  The result of your cscope
     " search will be displayed in the current window.  You can use CTRL-T to
     " go back to where you were before the search.
     "
 
-    nmap <C-\>s :lcs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>g :lcs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>c :lcs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>t :lcs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>e :lcs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>f :lcs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-\>i :lcs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\>d :lcs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>s :lcs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>g :lcs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>c :lcs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>t :lcs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>e :lcs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader>f :lcs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <leader>i :lcs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <leader>d :lcs find d <C-R>=expand("<cword>")<CR><CR>
 
 
-    " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
+    " Using '<leader>-spacebar' then a search type
     " makes the vim window split vertically, with search result displayed in
     " the new window.
 
-    nmap <C-@>g <C-W><C-V> :cs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>s <C-W><C-V> :lcs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>g <C-W><C-V> :lcs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>c <C-W><C-V> :lcs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>t <C-W><C-V> :lcs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>e <C-W><C-V> :lcs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@>f <C-W><C-V> :lcs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-@>i <C-W><C-V> :lcs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-@>d <C-W><C-V> :lcs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space>s <C-W><C-V> :lcs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space>g <C-W><C-V> :lcs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space>c <C-W><C-V> :lcs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space>t <C-W><C-V> :lcs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space>e <C-W><C-V> :lcs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space>f <C-W><C-V> :lcs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <leader><Space>i <C-W><C-V> :lcs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <leader><Space>d <C-W><C-V> :lcs find d <C-R>=expand("<cword>")<CR><CR>
 
 
-    " Hitting CTRL-space *twice* before the search type does a horizontal
+    " Hitting <leader> space *twice* before the search type does a horizontal
     " split instead of a vertical one (vim 6 and up only)
     "
     " (Note: you may wish to put a 'set splitright' in your .vimrc
     " if you prefer the new window on the right instead of the left
 
-    nmap <C-@><C-@>s <C-W><C-S> :lcs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@><C-@>g <C-W><C-S> :lcs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@><C-@>c <C-W><C-S> :lcs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@><C-@>t <C-W><C-S> :lcs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@><C-@>e <C-W><C-S> :lcs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-@><C-@>f <C-W><C-S> :lcs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-@><C-@>i <C-W><C-S> :lcs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-@><C-@>d <C-W><C-S> :lcs find d <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space><Space>s <C-W><C-S> :lcs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space><Space>g <C-W><C-S> :lcs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space><Space>c <C-W><C-S> :lcs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space><Space>t <C-W><C-S> :lcs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space><Space>e <C-W><C-S> :lcs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <leader><Space><Space>f <C-W><C-S> :lcs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <leader><Space><Space>i <C-W><C-S> :lcs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <leader><Space><Space>d <C-W><C-S> :lcs find d <C-R>=expand("<cword>")<CR><CR>
 
 
     """"""""""""" key map timeouts
@@ -173,5 +172,17 @@ if has("cscope")
     " timeoutlent (default: 1000 = 1 second, which is sluggish) is used.
     "
     "set ttimeoutlen=100
+
+    " Load cctree index
+    nmap <F5> :CCTreeLoadXRefDB cctree.out<CR>
+
+    " Build and load cctree index
+    nmap <F6> :CCTreeLoadDB cscope.out<CR>:CCTreeSaveXRefDB cctree.out<CR>
+
+    " Load cscope index
+    nmap <F7> :call CscopeLoadDB()<CR><CR>
+
+    " Build and load cscope index
+    nmap <F8> :!cscope -Rbq; ctags -R .<CR>:call CscopeLoadDB()<CR><CR>
 
 endif
