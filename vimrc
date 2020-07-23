@@ -52,11 +52,6 @@ highlight ExtraSpaces ctermbg=gray ctermfg=white
 autocmd InsertEnter * match ExtraSpaces /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraSpaces /\s\+$/
 
-" Taglist configuration
-autocmd BufWritePost * :TlistUpdate	" Update taglist after saving a file
-let Tlist_Show_One_File = 1		" Display tags of the active buffer only
-let Tlist_WinWidth = 50			" Set taglist window width
-
 " Search font definition
 hi Search cterm=NONE ctermfg=black ctermbg=lightgreen
 
