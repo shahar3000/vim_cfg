@@ -209,6 +209,7 @@ nnoremap <silent> <space>k :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p :<C-u>CocListResume<CR>
 
+" FZF commands
 nmap <Leader>p :Files<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>w :Windows<CR>
@@ -216,6 +217,8 @@ nmap <leader>T :Tags<CR>
 nmap <leader>BT :BTags<CR>
 nmap <leader>C :Commits<CR>
 nmap <leader>BC :BCommits<CR>
+nmap <leader>L :Lines<CR>
+nmap <leader>BL :BLines<CR>
 
 nmap <F2> :Rg<CR>
 nmap <F3> :Rg <C-R>=expand("<cword>")<CR><CR>
