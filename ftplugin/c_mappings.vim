@@ -106,8 +106,8 @@ if has("cscope")
     "
 
     nmap <leader>s :lcs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <leader>g :lcs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <leader>c :lcs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>g :lcs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-\>c :lcs find c <C-R>=expand("<cword>")<CR><CR>
     nmap <leader>t :lcs find t <C-R>=expand("<cword>")<CR><CR>
     nmap <leader>e :lcs find e <C-R>=expand("<cword>")<CR><CR>
     nmap <leader>f :lcs find f <C-R>=expand("<cfile>")<CR><CR>
@@ -120,8 +120,8 @@ if has("cscope")
     " the new window.
 
     nmap <leader><Space>s <C-W><C-V> :lcs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <leader><Space>g <C-W><C-V> :lcs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <leader><Space>c <C-W><C-V> :lcs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>g <C-W><C-V> :lcs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@>c <C-W><C-V> :lcs find c <C-R>=expand("<cword>")<CR><CR>
     nmap <leader><Space>t <C-W><C-V> :lcs find t <C-R>=expand("<cword>")<CR><CR>
     nmap <leader><Space>e <C-W><C-V> :lcs find e <C-R>=expand("<cword>")<CR><CR>
     nmap <leader><Space>f <C-W><C-V> :lcs find f <C-R>=expand("<cfile>")<CR><CR>
@@ -136,8 +136,8 @@ if has("cscope")
     " if you prefer the new window on the right instead of the left
 
     nmap <leader><Space><Space>s <C-W><C-S> :lcs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <leader><Space><Space>g <C-W><C-S> :lcs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <leader><Space><Space>c <C-W><C-S> :lcs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>g <C-W><C-S> :lcs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-@><C-@>c <C-W><C-S> :lcs find c <C-R>=expand("<cword>")<CR><CR>
     nmap <leader><Space><Space>t <C-W><C-S> :lcs find t <C-R>=expand("<cword>")<CR><CR>
     nmap <leader><Space><Space>e <C-W><C-S> :lcs find e <C-R>=expand("<cword>")<CR><CR>
     nmap <leader><Space><Space>f <C-W><C-S> :lcs find f <C-R>=expand("<cfile>")<CR><CR>
