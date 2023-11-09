@@ -1,5 +1,36 @@
 {
-	"go.disable": {
-		"workspaceFolders": false
-	}
+	"go": {
+		"disable": {
+			"workspaceFolders": false
+		},
+		"goplsOptions": {
+			"verboseOutput": true,
+			"semanticTokens": true
+		},
+		"trace": {
+			"server" : true
+		}
+	},
+
+	"coc-list-mappings-custom": true,
+	"list" : {
+		"previewSplitRight": true,
+		"normalMappings": {
+			//"v": "do:vsplit",
+			//"q": "do:previewup",
+			//"w": "do:previewdown"
+		}
+	},
+	"python" : {
+		"pythonPath" : "python3"
+	},
+	"python.formatting.provider": "black",
+	"python.formatting.blackArgs": ["--line-length=100"],
+	"semanticTokens": {
+		"filetypes": ["c", "cpp", "rust"]
+	},
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd",
+  "solargraph.formatting": true,
+  "suggest.noselect": true
+
 }

@@ -12,6 +12,23 @@ Plug 'justinmk/vim-syntax-extra'	" Improve C syntax presentation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jreybert/vimagit'
+
+" orgmode plugins
+Plug 'preservim/tagbar'
+Plug 'tpope/vim-speeddating'		" Allows to modify timestamps
+Plug 'vim-scripts/utl.vim'		" Allows to modify urls
+Plug 'inkarkat/vim-SyntaxRange'		" Add syntax to code blocks
+Plug 'chrisbra/NrrwRgn'			" Narrow the region in order to focus
+Plug 'jceb/vim-orgmode'			" Manage notes
+
+Plug 'vimwiki/vimwiki'
+
+
+Plug 'rhysd/vim-clang-format'
+
+
+Plug 'vim-utils/vim-ruby-fold'
 call plug#end()
 
 try
@@ -33,6 +50,9 @@ set laststatus=2			" Always on status line
 set viminfo+=n~/.vim/viminfo		" Set viminfo location inside .vim dir
 set relativenumber			" Use relative numbers
 set hidden				" Move between unsaved buffers
+set splitright				" Open new vertical split window right to current window
+set splitbelow				" Open new horizontal split window below to current window
+set mmp=5000
 
 if has("autocmd")
 	filetype plugin indent on
@@ -70,7 +90,9 @@ function! CustomIndex()
 	if filereadable("index.sh")
 		call feedkeys("\<CR>")
 		!bash index.sh
-		call CscopeLoadDB()
+		if exists('*CscopeLoadDB')
+			call CscopeLoadDB()
+		endif
 		call feedkeys("\<CR>")
 	else
 		echo("ERROR: index.sh was not found")
@@ -133,25 +155,78 @@ function! NerdTreeToggle()
 	endif
 endfunction
 
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
+"" Use tab for trigger completion with characters ahead and navigate.
+"inoremap <silent><expr> <TAB>
+"      \ coc#pum#visible() ? coc#pum#next(1):
+"      \ CheckBackspace() ? "\<Tab>" :
+"      \ coc#refresh()
+"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+"
+"" Make <CR> to accept selected completion item or notify coc.nvim to format
+"" <C-g>u breaks current undo, please make your own choice.
+"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
+"function! CheckBackspace() abort
+"  let col = col('.') - 1
+"  return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+"
+"" Use <c-space> to trigger completion.
+"if has('nvim')
+"  inoremap <silent><expr> <c-space> coc#refresh()
+"else
+"  inoremap <silent><expr> <c-@> coc#refresh()
+"endif
 
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
+
+
+
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-	inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
 else
-	imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 " Use auocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
@@ -162,23 +237,27 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> <leader>g <Plug>(coc-definition)
-nmap <silent> <leader>c <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
 
-nmap <silent> <leader><space>g <C-W><C-V> <Plug>(coc-definition)
-nmap <silent> <leader><space>c <C-W><C-V> <Plug>(coc-references)
+nmap <silent> g<space>d <C-W><C-V> <Plug>(coc-definition)
+nmap <silent> g<space>r <C-W><C-V> <Plug>(coc-references)
+nmap <silent> g<space>y <C-W><C-V> <Plug>(coc-type-definition)
+nmap <silent> g<space>i <C-W><C-V> <Plug>(coc-implementation)
 
-nmap <silent> <leader><space><space>g <C-W><C-S> <Plug>(coc-definition)
-nmap <silent> <leader><space><space>c <C-W><C-S> <Plug>(coc-references)
+nmap <silent> g<space><space>d <C-W><C-S> <Plug>(coc-definition)
+nmap <silent> g<space><space>r <C-W><C-S> <Plug>(coc-references)
+nmap <silent> g<space><space>y <C-W><C-S> <Plug>(coc-type-definition)
+nmap <silent> g<space><space>i <C-W><C-S> <Plug>(coc-implementation)
 
-" Use T to show documentation in preview window.
-nnoremap <silent> T :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -191,6 +270,10 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " Mappings using CoCList:
 " Show all diagnostics.
 nnoremap <silent> <space>a :<C-u>CocList diagnostics<cr>
@@ -198,7 +281,7 @@ nnoremap <silent> <space>a :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>e :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
-" Find symbol of current document.
+" Find symbol in current document.
 nnoremap <silent> <space>o :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
@@ -208,8 +291,20 @@ nnoremap <silent> <space>j :<C-u>CocNext<CR>
 nnoremap <silent> <space>k :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p :<C-u>CocListResume<CR>
+" Apply AutoFix to problem on the current line.
+nnoremap <silent> <leader>qf  <Plug>(coc-fix-current)
+" Use T to show documentation in preview window.
+nnoremap <silent> T :call <SID>show_documentation()<CR>
 
-" FZF commands
+" FZF
+let g:fzf_layout = { 'down': '60%' }
+" See https://github.com/junegunn/fzf.vim/issues/358#issuecomment-841665170
+let $FZF_DEFAULT_OPTS="--preview-window 'right:55%'
+	\ --bind ctrl-y:preview-up,ctrl-e:preview-down,
+	\ctrl-b:preview-page-up,ctrl-f:preview-page-down,
+	\ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down,ctrl-p:toggle-preview"
+
+" commands
 nmap <Leader>p :Files<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>w :Windows<CR>
@@ -219,15 +314,89 @@ nmap <leader>C :Commits<CR>
 nmap <leader>BC :BCommits<CR>
 nmap <leader>L :Lines<CR>
 nmap <leader>BL :BLines<CR>
+nmap <leader>bl :BLines <C-R>=expand("<cword>")<CR><CR>
 
-nmap <F2> :Rg<CR>
-nmap <F3> :Rg <C-R>=expand("<cword>")<CR><CR>
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --line-number --hidden --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* FGrep
+	\ call fzf#vim#grep(
+	\	'git grep --line-number --no-heading --color=always -- '.shellescape(<q-args>), 0,
+	\	fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+nmap <F2> :call coc#float#close_all()<CR>
+nmap <F3> :Rg<CR>
+nmap <F4> :Rg <C-R>=expand("<cword>")<CR><CR>
+nmap <F5> :FGrep<CR>
+nmap <F6> :FGrep <C-R>=expand("<cword>")<CR><CR>
+
+
+
+" Open current year org file
+" nmap <F7> :tabe /Volumes/workplace/notes/2022.org<CR>
+nmap <F7> ,wt:silent VimwikiAll2HTML<CR>:silent !open /workplace/vimwiki/site_html/index.html<CR>:q<CR>:redraw!<CR>
+
+nmap <F8> :Gvdiffsplit<CR>
 
 " Build ctags index
-nmap <F9> :!ctags -R .<CR>
+nmap <F9> :!ctags -R .<CR><CR>
 
 " File exploring toggling
 nmap <F10> :call NerdTreeToggle()<CR>
 
 " Build and load custom cscope index
 nmap <F12> :call CustomIndex()<CR>
+
+nmap gb :Git blame<CR>
+nmap gs :vertical G show<CR>
+
+command! -nargs=1 Rv silent :e scp://Asgard/<args>
+nmap <Leader>q :tabe<CR>:Rv /tmp/vim-command.output<CR>
+
+nmap <leader>a qaq:execute "g/" . expand("<cword>"). "/y A"<CR>:tabe<CR>"ap:w!/tmp/vim-command.output<CR>
+
+" Org configuration
+let g:org_agenda_files=['/Volumes/workplace/notes/2022.org']
+let g:utl_cfg_hdl_scm_http_system = "silent !open -a \"Google Chrome\" '%u'"
+let g:org_todo_keywords = [
+	\ ['TODO(t)', '|', 'DONE(d)'],
+\ ]
+
+
+
+filetype plugin on
+" need to install https://github.com/WnP/vimwiki_markdown
+" css comes from https://raw.githubusercontent.com/markdowncss/retro/master/css/retro.css
+" To set style run "pygmentize -S zenburn -f html -a .codehilite > style.css"
+" To view available styles run "pygmentize -L style"
+let g:vimwiki_list = [{
+	\ 'path': '/workplace/vimwiki/src',
+	\ 'syntax': 'markdown',
+	\ 'path_html': '/workplace/vimwiki/site_html/',
+	\ 'custom_wiki2html': 'vimwiki_markdown',
+	\ 'template_path': '/workplace/vimwiki/templates/',
+	\ 'template_default': 'default',
+	\ 'template_ext': '.tpl',
+	\ 'auto_tags': 1,
+	\ 'auto_generate_tags': 1,
+	\ 'ext': '.md'}]
+let g:tagquery_ctags_file = '/workplace/vimwiki/.vimwiki_tags'
+
+
+
+
+
+
+autocmd VimEnter * highlight link CocSemClass CocSemType
+autocmd VimEnter * highlight link CocSemStruct CocSemType
+autocmd VimEnter * highlight link CocSemMacro Macro
+autocmd VimEnter * highlight link CocSemEnumMember Constant
+
+let g:clang_format#command = '/usr/local/bin/clang-format'
+let g:clang_format#detect_style_file = 1
+nmap <Leader>F :ClangFormatAutoToggle<CR>
+
+
+nmap <leader>a qaq:execute "g/" . expand("<cword>"). "/y A"<CR>:tabe<CR>"ap

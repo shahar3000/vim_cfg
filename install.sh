@@ -7,10 +7,11 @@ install_ccglue() {
 	pushd $ccglue_path
 	git checkout 3fa724b17d854c359e380cc9ee2ad61756696e31
 
+	brew install automake
 	autoreconf -i
-	./configure
-	make -j8
-	sudo make install
+	./configure --prefix=/Users/shaharm/.local
+	make -stdlib=libstdc++ -j8
+	make install
 	popd
 	rm -rf $ccglue_path
 }
@@ -30,20 +31,20 @@ install_vim() {
 
 	git clone https://github.com/vim/vim.git $vim_path
 	pushd $vim_path
-	git checkout v8.1.2300
+	git checkout v8.2.0616
 
 	./configure --with-features=huge \
 		--enable-multibyte \
 		--enable-rubyinterp=yes \
 		--enable-pythoninterp=yes \
-		--with-python-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
+		--with-python-config-dir=/usr/local/lib/python3.7/site-packages \
 		--enable-perlinterp=yes \
 		--enable-luainterp=yes \
 		--enable-cscope \
-		--prefix=/usr/local
+		--prefix=/Users/shaharm/.local
 
 	make -j8
-	sudo make install
+	make install
 	popd
 	rm -rf $vim_path
 

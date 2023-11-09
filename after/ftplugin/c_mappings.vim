@@ -174,15 +174,15 @@ if has("cscope")
     "set ttimeoutlen=100
 
     " Load cctree index
-    nmap <F5> :CCTreeLoadXRefDB cctree.out<CR>
+    "nmap <F5> :CCTreeLoadXRefDB cctree.out<CR>
 
     " Build and load cctree index
-    nmap <F6> :CCTreeLoadDB cscope.out<CR>:CCTreeSaveXRefDB cctree.out<CR>
+    "nmap <F6> :CCTreeLoadDB cscope.out<CR>:CCTreeSaveXRefDB cctree.out<CR>
 
     " Load cscope index
-    nmap <F7> :call CscopeLoadDB()<CR><CR>
+    "nmap <F7> :call CscopeLoadDB()<CR><CR>
 
     " Build and load cscope index
-    nmap <F8> :!cscope -Rbq; ctags -R .<CR>:call CscopeLoadDB()<CR><CR>
+    "nmap <F8> :!cscope -Rbq; ctags -R .<CR>:call CscopeLoadDB()<CR><CR>
 
 endif
